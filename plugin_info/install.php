@@ -19,6 +19,8 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 // Fonction exécutée automatiquement après l'installation du plugin
 function modbusFlex_install() {
+	$resource_path = realpath(dirname(__FILE__) . '/../resources');  
+	passthru('/bin/bash ' . $resource_path . '/install.sh > ' . log::getPathToLog('modbusFlex_install') . ' 2>&1 &');
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
