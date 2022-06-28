@@ -141,7 +141,7 @@ class template extends eqLogic {
 
 }
 
-class templateCmd extends cmd {
+class modbusFlexCmd extends cmd {
   /*     * *************************Attributs****************************** */
 
   /*
