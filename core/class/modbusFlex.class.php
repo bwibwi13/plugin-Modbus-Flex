@@ -154,15 +154,16 @@ class modbusFlexCmd extends cmd {
 		}
 		$eqLogic = $this->getEqLogic();
 		
-		//$message = '';
-		//if (isset($_options['title'])) {
-		//	$message = $_options['title'] . '. ';
-		//}
-		//$message .= $_options['message'];
+		$message = '';
+		if (isset($_options['title'])) {
+			$message = $_options['title'] . '. ';
+		}
+		$message .= $_options['message'];
 		//$http = new com_http($eqLogic->getConfiguration('addrSrvTts') . '/?tts=' . urlencode($message));
 		//return $http->exec();
 		
 		//TODO - Call pymodbus
+		return $message;
 	}
 
   /*     * **********************Getteur Setteur*************************** */
