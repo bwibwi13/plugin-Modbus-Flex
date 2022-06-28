@@ -80,9 +80,12 @@ class modbusFlex extends eqLogic {
   public function postInsert() {
   }
 
-  // Fonction exécutée automatiquement avant la mise à jour de l'équipement
-  public function preUpdate() {
-  }
+	// Fonction exécutée automatiquement avant la mise à jour de l'équipement
+	public function preUpdate() {
+		if ($this->getConfiguration('ip') == '') {
+			throw new Exception(__('L\'adresse IP ne peut être vide', __FILE__));
+		}
+	}
 
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
 	public function postUpdate() {
