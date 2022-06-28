@@ -84,9 +84,18 @@ class modbusFlex extends eqLogic {
   public function preUpdate() {
   }
 
-  // Fonction exécutée automatiquement après la mise à jour de l'équipement
-  public function postUpdate() {
-  }
+	// Fonction exécutée automatiquement après la mise à jour de l'équipement
+	public function postUpdate() {
+		$cron = cron::byClassAndFunction('modbusFlex', 'updateModbusData', array('modbus_id' => intval($this->getId())));
+		if (!is_object($cron)) {
+			$cron = new cron();
+			$cron->setClass('modbusFlex');
+			$cron->setFunction('updateModbusData');
+			$cron->setOption(array('modbus_id' => intval($this->getId())));
+		}
+		$cron->setSchedule($this->getConfiguration('refreshCron', '* * * * *')); // TODO - Link cron to configuration
+		$cron->save();
+	}
 
   // Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
   public function preSave() {
@@ -104,6 +113,14 @@ class modbusFlex extends eqLogic {
   public function postRemove() {
   }
 
+public static function updateModbusData($_options) {
+	$modbusFlex = modbusFlex::byId($_options['modbus_id']);
+	if (is_object($modbusFlex)) {
+		foreach ($modbusFlex->getCmd('info') as $cmd) {
+			$modbusFlex->checkAndUpdateCmd($cmd,$cmd->execute());
+		}
+	}
+}
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
   * Exemple avec le champ "Mot de passe" (password)
