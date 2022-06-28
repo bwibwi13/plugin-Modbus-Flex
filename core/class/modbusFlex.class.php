@@ -18,7 +18,7 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-class template extends eqLogic {
+class modbusFlex extends eqLogic {
   /*     * *************************Attributs****************************** */
 
   /*
@@ -30,7 +30,7 @@ class template extends eqLogic {
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration du plugin
   * Exemple : "param1" & "param2" seront cryptés mais pas "param3"
-  public static $_encryptConfigKey = array('param1', 'param2');
+  public static $_encryptConfigKey = array();
   */
 
   /*     * ***********************Methode static*************************** */
@@ -160,9 +160,24 @@ class modbusFlexCmd extends cmd {
   }
   */
 
-  // Exécution d'une commande
-  public function execute($_options = array()) {
-  }
+	// Exécution d'une commande
+	public function execute($_options = array()) {
+		// Sample function from Jeedom documentation (https://doc.jeedom.com/fr_FR/dev/plugin_template)
+		if (!isset($_options['title']) && !isset($_options['message'])) {
+			throw new Exception(__("Le titre ou le message ne peuvent être tous les deux vide", __FILE__));
+		}
+		$eqLogic = $this->getEqLogic();
+		
+		//$message = '';
+		//if (isset($_options['title'])) {
+		//	$message = $_options['title'] . '. ';
+		//}
+		//$message .= $_options['message'];
+		//$http = new com_http($eqLogic->getConfiguration('addrSrvTts') . '/?tts=' . urlencode($message));
+		//return $http->exec();
+		
+		//TODO - Call pymodbus
+	}
 
   /*     * **********************Getteur Setteur*************************** */
 
