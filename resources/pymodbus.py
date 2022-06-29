@@ -23,39 +23,35 @@ if not client.connect():
 result = client.read_holding_registers(sys.argv[3], sys.argv[4])
 decoder = BinaryPayloadDecoder.fromRegisters(result.registers, sys.argv[5], sys.argv[6])
 
-match sys.argv[7]:
-	case 'float':
-		match sys.argv[4]:
-			case 1:
-				print(decoder.decode_16bit_float())
-				exit()
-			case 2:
-				print(decoder.decode_32bit_float())
-				exit()
-			case 4:
-				print(decoder.decode_64bit_float())
-				exit()
-	case 'int':
-		match sys.argv[4]:
-			case 1:
-				print(decoder.decode_16bit_int())
-				exit()
-			case 2:
-				print(decoder.decode_32bit_int())
-				exit()
-			case 4:
-				print(decoder.decode_64bit_int())
-				exit()
-	case 'uint':
-		match sys.argv[4]:
-			case 1:
-				print(decoder.decode_16bit_uint())
-				exit()
-			case 2:
-				print(decoder.decode_32bit_uint())
-				exit()
-			case 4:
-				print(decoder.decode_64bit_uint())
-				exit()
+if sys.argv[7] == 'float':
+	if sys.argv[4] == 1:
+		print(decoder.decode_16bit_float())
+		exit()
+	elfi sys.argv[4] == 2:
+		print(decoder.decode_32bit_float())
+		exit()
+	elif sys.argv[4] == 4:
+		print(decoder.decode_64bit_float())
+		exit()
+elif sys.argv[7] == 'int':
+	if sys.argv[4] == 1:
+		print(decoder.decode_16bit_int())
+		exit()
+	elif sys.argv[4] == 2:
+		print(decoder.decode_32bit_int())
+		exit()
+	elif sys.argv[4] == 4:
+		print(decoder.decode_64bit_int())
+		exit()
+elif sys.argv[7] == 'uint':
+	if sys.argv[4] == 1:
+		print(decoder.decode_16bit_uint())
+		exit()
+	elif sys.argv[4] == 2:
+		print(decoder.decode_32bit_uint())
+		exit()
+	elif sys.argv[4] == 4:
+		print(decoder.decode_64bit_uint())
+		exit()
 
 print('Error - some argument was probably not correct (', str(sys.argv), ')')
