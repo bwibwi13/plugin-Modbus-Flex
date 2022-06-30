@@ -1,16 +1,16 @@
 {
-	"id" : "modbusFlex",
-	"name" : "Modbus Flex",
-	"description" : {
+	"id": "modbusFlex",
+	"name": "Modbus Flex",
+	"description": {
 		"fr_FR": "Plugin pour communiquer avec des équipements Modbus TCP (donnant toute la flexibilité dans la définition du memory map)",
-		'en_US": "Plugin to communicate with Modbus TCP devices (giving full flexibility in definition of register map)"
+		"en_US": "Plugin to communicate with Modbus TCP devices (giving full flexibility in definition of register map)"
 	},
-	"licence" : "AGPL",
-	"author" : "bwibwi13",
-	"require" : "3.3.39",
-	"category" : "devicecommunication",
-	"changelog" : "https://github.com/bwibwi13/plugin-ModbusFlex/commits/master",
-	"documentation" : "https://github.com/bwibwi13/plugin-ModbusFlex",
+	"licence": "AGPL",
+	"author": "bwibwi13",
+	"require": "3.3.39",
+	"category": "devicecommunication",
+	"changelog": "https://github.com/bwibwi13/plugin-ModbusFlex/commits/master",
+	"documentation": "https://github.com/bwibwi13/plugin-ModbusFlex",
 	"language": [
 		"fr_FR",
 		"en_US"
@@ -25,17 +25,17 @@
 		"v4",
 		"atlas"
 	],
-	"hasDependency" : false,
-	"hasOwnDeamon" : false,
-	"maxDependancyInstallTime" : 0,
-	"specialAttributes" : {
-		"object" : {
-			"TODO1" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial"},"type" : "input"},
-			"TODO2" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial number"},"type" : "number"}
+	"hasDependency": false,
+	"hasOwnDeamon": false,
+	"maxDependancyInstallTime": 0,
+	"specialAttributes": {
+		"object": {
+			"TODO1": {"name": {"fr_FR": "Plop je suis un attribut spécial"},"type": "input"},
+			"TODO2": {"name": {"fr_FR": "Plop je suis un attribut spécial number"},"type": "number"}
 		},
-		"user" : {
-			"TODO" : {"name" : {"fr_FR" : "Plop je suis un attribut spécial"},"type" : "select","values" : [{"value" : "1", "name" : "valeur 1"},{"value" : "plop", "name" : "valeur plop"}]}
+		"user": {
+			"TODO": {"name": {"fr_FR": "Plop je suis un attribut spécial"},"type": "select","values": [{"value": "1", "name": "valeur 1"},{"value": "plop", "name": "valeur plop"}]}
 		}
 	},
-	"issue" : "https://github.com/bwibwi13/plugin-ModbusFlex/issues"
+	"issue": "https://github.com/bwibwi13/plugin-ModbusFlex/issues"
 }
