@@ -35,6 +35,10 @@ class modbusFlex extends eqLogic {
 
 	/*     * ***********************Methode static*************************** */
 	// Template came with all jeedom cron functions
+	//Fonction exécutée automatiquement toutes les minutes par Jeedom
+	public static function cron() {
+		log::add('modbusFlex_cron', 'debug', 'Running cron()', );
+	}
 
   /*     * *********************Méthodes d'instance************************* */
 
@@ -49,26 +53,32 @@ class modbusFlex extends eqLogic {
 	// Fonction exécutée automatiquement avant la mise à jour de l'équipement
 	public function preUpdate() {
 		if ($this->getConfiguration('ip') == '') {
-			throw new Exception(__('L\'adresse IP ne peut être vide', __FILE__));
+			throw new Exception(__('L\'adresse IP ne peut pas être vide', __FILE__));
 		}
 	}
 
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
 	public function postUpdate() {
-		$cron = cron::byClassAndFunction('modbusFlex', 'updateModbusData', array('modbus_id' => intval($this->getId())));
-		if (!is_object($cron)) {
-			$cron = new cron();
-			$cron->setClass('modbusFlex');
-			$cron->setFunction('updateModbusData');
-			$cron->setOption(array('modbus_id' => intval($this->getId())));
-		}
-		$cron->setSchedule($this->getConfiguration('refreshCron', '* * * * *')); // TODO - Link cron to configuration
-		$cron->save();
+		//$cron = cron::byClassAndFunction('modbusFlex', 'updateModbusData', array('modbus_id' => intval($this->getId())));
+		//if (!is_object($cron)) {
+		//	$cron = new cron();
+		//	$cron->setClass('modbusFlex');
+		//	$cron->setFunction('updateModbusData');
+		//	$cron->setOption(array('modbus_id' => intval($this->getId())));
+		//}
+		//$cron->setSchedule($this->getConfiguration('refreshCron', '* * * * *')); // TODO - Link cron to configuration
+		//$cron->save();
 	}
 
-  // Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
-  public function preSave() {
-  }
+	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
+	public function preSave() {
+		if ($this->getConfiguration('autorefresh') == '') {
+			$this->setConfiguration('autorefresh', '* * * * *');
+		}
+		if ($this->getConfiguration('port') == '') {
+			$this->setConfiguration('port', '502');
+		}
+	}
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
@@ -83,12 +93,12 @@ class modbusFlex extends eqLogic {
   }
 
 public static function updateModbusData($_options) {
-	$modbusFlex = modbusFlex::byId($_options['modbus_id']);
-	if (is_object($modbusFlex)) {
-		foreach ($modbusFlex->getCmd('info') as $cmd) {
-			$modbusFlex->checkAndUpdateCmd($cmd,$cmd->execute());
-		}
-	}
+	//$modbusFlex = modbusFlex::byId($_options['modbus_id']);
+	//if (is_object($modbusFlex)) {
+	//	foreach ($modbusFlex->getCmd('info') as $cmd) {
+	//		$modbusFlex->checkAndUpdateCmd($cmd,$cmd->execute());
+	//	}
+	//}
 }
   /*
   * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
@@ -139,12 +149,10 @@ class modbusFlexCmd extends cmd {
 
   /*     * *********************Methode d'instance************************* */
 
-  /*
-  * Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
+	* Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
   public function dontRemoveCmd() {
     return true;
   }
-  */
 
 	// Exécution d'une commande
 	public function execute($_options = array()) {

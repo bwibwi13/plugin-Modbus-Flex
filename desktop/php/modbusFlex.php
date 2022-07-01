@@ -130,20 +130,20 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Adresse IP}}</label>
 								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="x.x.x.x" data-l2key="ip"/>
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ip"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Port}}</label>
 								<div class="col-sm-6">
-									<input type="text" class="eqLogicAttr form-control" data-l1key="502" data-l2key="port"/>
+									<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<font color=red><b>!!! TODO !!! Polling with deamon not implemented yet !!!</b></font>
 								<label class="col-sm-4 control-label">{{Polling}}</label>
 								<div class="col-sm-6">
-									<input type="number" class="eqLogicAttr form-control" data-l1key="30" data-l2key="polling"/>
+									<input type="number" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="polling"/>
 								</div>
 							</div>
 						</div>
@@ -155,7 +155,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							<label class="col-sm-4 control-label">{{Auto-actualisation}}
 								<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement des commandes infos de l'équipement}}"></i></sup>
 							</label>
-							<div class="col-sm-6">
+<font color=red><b>!!! TODO !!! Cron not implemented yet !!!</b></font>
+							<div class="col-sm-2">
 								<div class="input-group">
 									<input type="text" class="eqLogicAttr form-control roundedLeft" data-l1key="configuration" data-l2key="autorefresh" placeholder="{{Cliquer sur ? pour afficher l'assistant cron}}">
 									<span class="input-group-btn">

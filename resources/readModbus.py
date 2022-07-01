@@ -27,7 +27,7 @@ if sys.argv[7] == 'float':
 	if sys.argv[4] == 1:
 		print(decoder.decode_16bit_float())
 		exit()
-	elfi sys.argv[4] == 2:
+	elif sys.argv[4] == 2:
 		print(decoder.decode_32bit_float())
 		exit()
 	elif sys.argv[4] == 4:
