@@ -37,7 +37,7 @@ class modbusFlex extends eqLogic {
 	// Template came with all jeedom cron functions
 	//Fonction exécutée automatiquement toutes les minutes par Jeedom
 	public static function cron() {
-		log::add('modbusFlex_cron', 'debug', 'Running cron()', );
+		log::add('modbusFlex', 'debug', 'Running cron()', );
 	}
 
   /*     * *********************Méthodes d'instance************************* */
@@ -59,22 +59,10 @@ class modbusFlex extends eqLogic {
 
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
 	public function postUpdate() {
-		//$cron = cron::byClassAndFunction('modbusFlex', 'updateModbusData', array('modbus_id' => intval($this->getId())));
-		//if (!is_object($cron)) {
-		//	$cron = new cron();
-		//	$cron->setClass('modbusFlex');
-		//	$cron->setFunction('updateModbusData');
-		//	$cron->setOption(array('modbus_id' => intval($this->getId())));
-		//}
-		//$cron->setSchedule($this->getConfiguration('refreshCron', '* * * * *')); // TODO - Link cron to configuration
-		//$cron->save();
 	}
 
 	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
 	public function preSave() {
-		if ($this->getConfiguration('autorefresh') == '') {
-			$this->setConfiguration('autorefresh', '* * * * *');
-		}
 		if ($this->getConfiguration('port') == '') {
 			$this->setConfiguration('port', '502');
 		}
