@@ -1,5 +1,5 @@
 {
-	"id": "modbusFlex",
+	"id": "modbusflex",
 	"name": "Modbus Flex",
 	"description": {
 		"fr_FR": "Plugin pour communiquer avec des équipements Modbus TCP (donnant toute la flexibilité dans la définition du memory map)",

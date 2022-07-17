@@ -18,7 +18,7 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-class modbusFlex extends eqLogic {
+class modbusflex extends eqLogic {
   /*     * *************************Attributs****************************** */
 
   /*
@@ -37,7 +37,7 @@ class modbusFlex extends eqLogic {
 	// Template came with all jeedom cron functions
 	//Fonction exécutée automatiquement toutes les minutes par Jeedom
 	public static function cron() {
-		log::add('modbusFlex', 'debug', 'Running cron()', );
+		log::add('modbusflex', 'debug', 'Running cron()', );
 	}
 
   /*     * *********************Méthodes d'instance************************* */
@@ -81,10 +81,10 @@ class modbusFlex extends eqLogic {
   }
 
 public static function updateModbusData($_options) {
-	//$modbusFlex = modbusFlex::byId($_options['modbus_id']);
-	//if (is_object($modbusFlex)) {
-	//	foreach ($modbusFlex->getCmd('info') as $cmd) {
-	//		$modbusFlex->checkAndUpdateCmd($cmd,$cmd->execute());
+	//$modbusflex = modbusflex::byId($_options['modbus_id']);
+	//if (is_object($modbusflex)) {
+	//	foreach ($modbusflex->getCmd('info') as $cmd) {
+	//		$modbusflex->checkAndUpdateCmd($cmd,$cmd->execute());
 	//	}
 	//}
 }
@@ -125,7 +125,7 @@ public static function updateModbusData($_options) {
 
 }
 
-class modbusFlexCmd extends cmd {
+class modbusflexCmd extends cmd {
   /*     * *************************Attributs****************************** */
 
   /*
