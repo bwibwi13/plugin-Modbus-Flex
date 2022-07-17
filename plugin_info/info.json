@@ -8,7 +8,7 @@
 	"licence": "AGPL",
 	"author": "bwibwi13",
 	"require": "3.3.39",
-	"category": "devicecommunication",
+	"category": "automation protocol",
 	"changelog": "https://github.com/bwibwi13/plugin-ModbusFlex/commits/master",
 	"documentation": "https://github.com/bwibwi13/plugin-ModbusFlex",
 	"language": [
